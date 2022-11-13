@@ -1,13 +1,12 @@
-import { useState } from "react";
-import "./App.css";
-
+import { Route, Routes } from "react-router-dom";
+import Text from "./pages/Text";
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <h1>첫 배포</h1>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Text />} />
+      </Routes>
+    </>
   );
 }
 
