@@ -11,7 +11,9 @@ const Search = () => {
 
   useEffect(() => {
     (async () => {
-      // const {data} =await axios.get
+      const { data } = await axios.get<SearchList[]>('http://localhost:3001/info');
+      const list = data.filter(el => el.name.includes(search));
+      setSearchList(list);
     })();
   }, [search]);
 
@@ -20,7 +22,6 @@ const Search = () => {
     timeSet.current = setTimeout(() => {
       setSearch(target.value);
     }, 500);
-    console.log(target.value);
   };
 
   return (
@@ -28,12 +29,12 @@ const Search = () => {
       <form onSubmit={e => e.preventDefault()}>
         <input type='text' ref={inputRef} placeholder='검색어 입력' onChange={searchHandler} />
       </form>
-      {searchList.map(info => (
-        <ul>
-          <li>코드</li>
-          <li>카타</li>
-        </ul>
-      ))}
+
+      <ul>
+        {searchList.map(info => (
+          <li key={info.id}>{info.name}</li>
+        ))}
+      </ul>
     </>
   );
 };
