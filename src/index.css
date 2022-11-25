@@ -32,6 +32,9 @@ body {
   min-height: 100vh;
 }
 
+ul {
+  padding-inline-start: 0px;
+}
 li {
   list-style: none;
 }
