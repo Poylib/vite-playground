@@ -1,6 +1,7 @@
 import db from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import React from 'react';
+import GetDataList from '../components/GetDataList';
 
 const FirebaseTeting = () => {
   const formHandler: React.FormEventHandler<HTMLFormElement> = async e => {
@@ -9,11 +10,12 @@ const FirebaseTeting = () => {
       inputValue: { value: string };
     };
     const value = target.inputValue.value;
+    const inputRef = collection(db, 'users');
     try {
-      const docRef = await addDoc(collection(db, 'testing'), {
+      await setDoc(doc(inputRef, 'name'), {
         data: value,
       });
-      console.log('Document written with ID: ', docRef.id);
+      console.log('success');
     } catch (e) {
       console.error('Error adding document: ', e);
     }
@@ -25,6 +27,7 @@ const FirebaseTeting = () => {
         <input name='inputValue' />
         <button>제출버튼</button>
       </form>
+      <GetDataList />
     </>
   );
 };
