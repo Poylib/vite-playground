@@ -1,20 +1,28 @@
 import db from '../firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { useEffect } from 'react';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { async } from '@firebase/util';
 
 const GetDataList = () => {
+  const [nameList, setNameList] = useState(['list']);
   useEffect(() => {
     (async () => {
-      const querySnapshot = await getDocs(collection(db, 'users'));
-      querySnapshot.forEach(doc => {
-        console.log(`${doc.id} => ${doc.data()}`);
+      // const docRef = doc(db, 'users');
+      const docRefs = collection(db, 'users');
+      const docSnap = await getDocs(docRefs);
+      docSnap.forEach(doc => {
+        // console.log(doc.id, ' => ', doc.data());
+        const { data } = doc.data();
+        setNameList([data]);
       });
     })();
   }, []);
   return (
     <>
       <ul>
-        <li>리스트</li>
+        {nameList.map((name, index) => {
+          return <li key={index}>{name}</li>;
+        })}
       </ul>
     </>
   );
