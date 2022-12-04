@@ -1,15 +1,22 @@
 import db from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import React, { useRef } from 'react';
+import React from 'react';
 
 const FirebaseTeting = () => {
-  const formHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const formHandler: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       inputValue: { value: string };
     };
     const value = target.inputValue.value;
-    console.log(value);
+    try {
+      const docRef = await addDoc(collection(db, 'testing'), {
+        data: value,
+      });
+      console.log('Document written with ID: ', docRef.id);
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
   };
 
   return (
