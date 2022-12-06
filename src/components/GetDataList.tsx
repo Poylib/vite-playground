@@ -1,7 +1,6 @@
 import db from '../firebase';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { async } from '@firebase/util';
 
 const GetDataList = () => {
   const [nameList, setNameList] = useState(['list']);
