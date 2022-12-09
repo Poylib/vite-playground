@@ -9,7 +9,7 @@ import { getFirestore } from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FB_API_KEY,
   authDomain: import.meta.env.VITE_APP_FB_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_APP_FB_PROJECT_ID,
+  projectId: 'vite-firebase-test-7877e',
   storageBucket: import.meta.env.VITE_APP_FB_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_APP_FB_MESSAGE_ID,
   appId: import.meta.env.VITE_APP_FB_APP_ID,
