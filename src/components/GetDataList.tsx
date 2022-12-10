@@ -3,7 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { UserData } from '../interface';
 
-function GetDataList() {
+const GetDataList = () => {
   const [nameList, setNameList] = useState<UserData[]>([]);
 
   useEffect(() => {
@@ -18,21 +18,19 @@ function GetDataList() {
     })();
   }, []);
   return (
-    <>
-      <ul>
-        {nameList.map((list, index) => {
-          return (
-            <li key={index}>
-              <p>
-                name: {list.name} <br />
-                age: {list.age}
-              </p>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <ul>
+      {nameList.map((list, index) => {
+        return (
+          <li key={index}>
+            <p>
+              name: {list.name} <br />
+              age: {list.age}
+            </p>
+          </li>
+        );
+      })}
+    </ul>
   );
-}
+};
 
 export default GetDataList;
