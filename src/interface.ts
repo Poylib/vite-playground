@@ -12,3 +12,10 @@ export interface Bears {
   increasePopulation: () => void;
   removeAllBears: () => void;
 }
+
+export interface User {
+  user: {
+    name: string;
+    age: string;
+  };
+}
