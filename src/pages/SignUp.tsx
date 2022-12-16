@@ -1,9 +1,9 @@
 import db from '../firebase';
 import { collection, doc, setDoc } from 'firebase/firestore';
-import React from 'react';
 import GetDataList from '../components/GetDataList';
+import { Link } from 'react-router-dom';
 
-const FirebaseTeting = () => {
+const SignUp = () => {
   const formHandler: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -21,22 +21,23 @@ const FirebaseTeting = () => {
           age: ageValue,
         },
       });
-      console.log('success');
+      alert(`회원번호는 ${randomNum} 입니다.`);
     } catch (e) {
       console.error('Error adding document: ', e);
     }
   };
-
   return (
     <>
       <form onSubmit={formHandler}>
-        <input name='nameInput' />
-        <input name='ageInput' />
+        <p>회원가입</p>
+        <input type='text' name='nameInput' />
+        <input type='number' name='ageInput' />
         <button>제출버튼</button>
       </form>
+      <Link to='/login'>go Login</Link>
       <GetDataList />
     </>
   );
 };
 
-export default FirebaseTeting;
+export default SignUp;

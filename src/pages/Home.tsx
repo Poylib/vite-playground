@@ -8,10 +8,11 @@ const Home = () => {
         <Link to='/search'>Debouncing Test</Link>
       </li>
       <li>
-        <Link to='/fb'>firebase Test</Link>
+        <Link to='/signup'>Signup</Link>
+        <Link to='/login'>Login</Link>
       </li>
       <li>
-        <Link to='/login'>UserCheck Test ( zustand )</Link>
+        <Link to='/zt'>UserCheck Test ( zustand )</Link>
       </li>
     </StyledHome>
   );
@@ -23,5 +24,9 @@ const StyledHome = styled.ul`
     margin: 10px 0;
     padding: 10px;
     font-size: 30px;
+    a {
+      display: block;
+      margin: 10px 0;
+    }
   }
 `;
